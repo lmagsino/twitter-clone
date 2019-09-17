@@ -1,0 +1,2 @@
+class Reply < Tweet
+end
