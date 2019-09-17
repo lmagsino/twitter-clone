@@ -12,6 +12,18 @@
     </div>
   </div>
   <div class="col-6">
+    <%= form_for(@newTweet, :remote => true) do |f| %>
+      <center>
+        <div class="field">
+          <%= f.text_field :content, autofocus: true %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Add Tweet" %>
+        </div>
+      </center>
+    <% end %>
+
     <% for tweet in @tweets %>
       <div class="card">
         <div class="card-body">
