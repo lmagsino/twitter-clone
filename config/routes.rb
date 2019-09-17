@@ -13,5 +13,4 @@ Rails.application.routes.draw do
 
   post 'generals', :to => 'generals#create'
 
-
 end
