@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'pages#index'
 
   get 'home', :to => 'pages#home'
+  get 'profile', :to => 'pages#profile'
 
   resources :users, :only => [:new, :create]
 

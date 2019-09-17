@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-12">
+    <div class="jumbotron">
+      HEADER
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-3">
+    <div class="card">
+      <div class="card-body">
+        <p>profile</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-6">
+
+    <% for tweet in @tweets %>
+      <div class="card">
+        <div class="card-body">
+          <p><%= tweet.content %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-3">
+    <div class="card">
+      <div class="card-body">
+        <p>Who to follow</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <p>trends</p>
+      </div>
+    </div>
+  </div>
+</div>
