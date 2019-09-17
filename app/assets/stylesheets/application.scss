@@ -12,3 +12,24 @@
  */
 
 @import "bootstrap";
+@import "pages.scss";
+
+.navbar {
+  background-color: white
+}
+
+.twitter-logo {
+  width:25px;
+  height:25px;
+  position: absolute;
+  left: 50%;
+}
+
+.profile-logo {
+  width:25px;
+  height:25px;
+}
+
+body {
+  background-color: rgba(212, 216, 212, 1.0)
+}
