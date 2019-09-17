@@ -1,1 +1,30 @@
-<h1>home</h1>
+<div class="row">
+  <div class="col-3">
+    <div class="card">
+      <div class="card-body">
+        <p>status</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <p>status</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <% for tweet in @tweets %>
+      <div class="card">
+        <div class="card-body">
+          <p><%= tweet.content %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-3">
+    <div class="card">
+      <div class="card-body">
+        <p>about</p>
+      </div>
+    </div>
+  </div>
+</div>
