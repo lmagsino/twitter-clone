@@ -15,7 +15,8 @@
 @import "pages.scss";
 
 .navbar {
-  background-color: white
+  background-color: white;
+  margin-bottom: 20px;
 }
 
 .twitter-logo {
@@ -30,15 +31,33 @@
   height:25px;
 }
 
-// .tweet-modal {
-//   left: 0;
-//   min-width: 100%;
-//   height: 100%;
-// }
+.tweet-profile-logo {
+  width:50px;
+  height:50px;
+}
 
 .tweet-text-area {
   width: 100%;
   height: 100%;
+}
+
+.tweet-content {
+  text-align: left;
+  margin-left: 15px;
+}
+
+.tweet-title {
+  text-align: left;
+  margin-left: 15px;
+}
+
+.tweet-owner {
+  color: black;
+  font-weight: bold;
+}
+
+.tweet-creation {
+  opacity: 0.7;
 }
 
 body {

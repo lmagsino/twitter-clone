@@ -15,19 +15,36 @@
     <%= form_for(@newTweet, :remote => true) do |f| %>
       <center>
         <div class="field">
-          <%= f.text_field :content, autofocus: true %>
-        </div>
-
-        <div class="actions">
+          <%= f.text_field :content, autofocus: true, class: 'form-control' %>
           <%= f.submit "Add Tweet" %>
         </div>
       </center>
     <% end %>
-
+    </br></br>
     <% for tweet in @tweets %>
-      <div class="card">
-        <div class="card-body">
-          <p><%= tweet.content %></p>
+      <div class="card post-panel">
+        <div class="card-body row">
+          <div class='col-sm-1'>
+            <img src='/assets/profile-logo.jpg' class='tweet-profile-logo'>
+          </div>
+          <div class='col-sm-11'>
+            <p class='tweet-title'>
+              <span class='tweet-owner'><%= current_user.username %></span>
+              <span class='tweet-creation'>
+                <%= current_user.created_at.to_formatted_s(:short) %>
+              </span
+            </p>
+            <p class='tweet-content'><%= tweet.content %></p>
+          </div>
+          <div class='col-sm-12'>
+            <p class='tweet-links'>
+              <span></span>
+              <span class='glyphicon glyphicon-comment g-links' aria-hidden='true'>Reply</span>
+              <span class='glyphicon glyphicon-pencil' aria-hidden='true'>Edit</span>
+              <span class='glyphicon glyphicon-remove' aria-hidden='true'>Delete</span>
+              <a href=''>View Conversation</a>
+            </p>
+          </div>
         </div>
       </div>
     <% end %>
