@@ -29,7 +29,7 @@
           </div>
           <div class='col-sm-11'>
             <p class='tweet-title'>
-              <span class='tweet-owner'><%= current_user.username %></span>
+              <span class='tweet-owner'><%= tweet.user.username %></span>
               <span class='tweet-creation'>
                 <%= tweet.created_at.to_formatted_s(:short) %>
               </span
