@@ -12,7 +12,7 @@
         <div class="tweet-modal">
             <center>
               <div class="modal-body">
-                <%= f.text_area :content, autofocus: true, class: 'tweet-text-area' %>
+                <%= f.text_area :content, autofocus: true, maxlength: 140, class: 'tweet-text-area' %>
                 <%= f.hidden_field :tweet_id, :value => tweet.id %>
               </div>
             </center>

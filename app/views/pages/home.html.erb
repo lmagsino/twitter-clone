@@ -15,7 +15,7 @@
     <%= form_for(General.new, :remote => true) do |f| %>
       <center>
         <div class="field">
-          <%= f.text_field :content, autofocus: true, class: 'form-control' %>
+          <%= f.text_field :content, autofocus: true, maxlength: 140, class: 'form-control' %>
           <%= f.submit "Add Tweet" %>
         </div>
       </center>
