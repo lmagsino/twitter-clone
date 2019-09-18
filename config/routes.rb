@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   resources :generals, :only => [:create, :update]
   resources :replies, :only => [:create, :update]
   resources :tweets, :only => :destroy
+  resources :users, :only => [:new, :create]
 
 end
