@@ -44,64 +44,8 @@
               <%= link_to 'View Conversation', conversation_path(
               :id => tweet.id) %>
 
-              <!-- EDIT -->
-              <div class="modal fade" id="editTweet-<%= tweet.id %>" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="modalLabel">Edit Tweet</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <%= form_for(tweet,  :remote => true) do |f| %>
-                      <div class="tweet-modal">
-                          <center>
-                            <div class="modal-body">
-                              <%= f.text_area :content, autofocus: true, class: 'tweet-text-area' %>
-                            </div>
-                          </center>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <%= f.submit "Update Tweet", :class => 'btn btn-primary' %>
-                      </div>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-              <!-- EDIT -->
-
-              <!-- REPLY -->
-              <div class="modal fade" id="replyTweet-<%= tweet.id %>" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="modalLabel">Reply To Tweet
-                      </h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <%= form_for(Reply.new,  :remote => true) do |f| %>
-                      <div class="tweet-modal">
-                          <center>
-                            <div class="modal-body">
-                              <%= f.text_area :content, autofocus: true, class: 'tweet-text-area' %>
-                              <%= f.hidden_field :tweet_id, :value => tweet.id %>
-                            </div>
-                          </center>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <%= f.submit "Reply", :class => 'btn btn-primary' %>
-                      </div>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-              <!-- REPLY -->
-
+              <%= render 'edit_tweet.html.erb', :tweet => tweet %>
+              <%= render 'reply_tweet.html.erb', :tweet => tweet %>
             </p>
           </div>
         </div>
