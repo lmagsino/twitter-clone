@@ -12,6 +12,11 @@ class PagesController < ApplicationController
     @tweets = General.all.where('user_id = ?', current_user.id)
   end
 
+  def conversation
+    @tweet = Tweet.find(params[:id])
+    @replies = @tweet.replies
+  end
+
 
   private
 

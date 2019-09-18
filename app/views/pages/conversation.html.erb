@@ -1,0 +1,199 @@
+<div class="row">
+  <div class="col-3">
+    <div class="card">
+      <div class="card-body">
+        <p>status</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <p>status</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+      <center>
+
+        <div class="card post-panel">
+          <div class="card-body row">
+            <div class='col-sm-1'>
+              <img src='/assets/profile-logo.jpg' class='tweet-profile-logo'>
+            </div>
+            <div class='col-sm-11'>
+              <p class='tweet-title'>
+                <span class='tweet-owner'><%= current_user.username %></span>
+                <span class='tweet-creation'>
+                  <%= @tweet.created_at.to_formatted_s(:short) %>
+                </span
+              </p>
+              <p class='tweet-conversation-content'><%= @tweet.content %></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <%= link_to 'Reply', '#', data: {toggle: "modal", target: "#replyTweet-" +@tweet.id.to_s} %>
+            </div>
+            <div class="col-sm-4">
+              <%= link_to 'Edit', '#', data: {toggle: "modal", target: "#editTweet-" + @tweet.id.to_s} %>
+            </div>
+            <div class="col-sm-4">
+              <%= link_to 'Delete', tweet_path(@tweet.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+
+            <!-- EDIT -->
+            <div class="modal fade" id="editTweet-<%= @tweet.id %>" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Edit Tweet</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <%= form_for(@tweet,  :remote => true) do |f| %>
+                    <div class="tweet-modal">
+                        <center>
+                          <div class="modal-body">
+                            <%= f.text_area :content, autofocus: true, class: 'tweet-text-area' %>
+                          </div>
+                        </center>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <%= f.submit "Update Tweet", :class => 'btn btn-primary' %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <!-- EDIT -->
+
+            <!-- REPLY -->
+            <div class="modal fade" id="replyTweet-<%= @tweet.id %>" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Reply To Tweet
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <%= form_for(Reply.new,  :remote => true) do |f| %>
+                    <div class="tweet-modal">
+                        <center>
+                          <div class="modal-body">
+                            <%= f.text_area :content, autofocus: true, class: 'tweet-text-area' %>
+                            <%= f.hidden_field :tweet_id, :value => @tweet.id %>
+                          </div>
+                        </center>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <%= f.submit "Reply", :class => 'btn btn-primary' %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <!-- REPLY -->
+
+          </div>
+        </div>
+      </center>
+      </br>
+    <% for reply in @replies %>
+      <div class="card post-panel">
+        <div class="card-body row">
+          <div class='col-sm-1'>
+            <img src='/assets/profile-logo.jpg' class='tweet-profile-logo'>
+          </div>
+          <div class='col-sm-11'>
+            <p class='tweet-title'>
+              <span class='tweet-owner'><%= current_user.username %></span>
+              <span class='tweet-creation'>
+                <%= reply.created_at.to_formatted_s(:short) %>
+              </span
+            </p>
+            <p class='tweet-content'><%= reply.content %></p>
+          </div>
+          <div class='col-sm-12'>
+            <p class='tweet-links'>
+              <%= link_to 'Reply', '#', data: {toggle: "modal", target: "#replyTweet-" +reply.id.to_s} %>
+              <%= link_to 'Edit', '#', data: {toggle: "modal", target: "#editTweet-" + reply.id.to_s} %>
+              <%= link_to 'Delete', reply_path(reply.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= link_to 'View Conversation', conversation_path(
+              :id => reply.id) %>
+
+              <!-- EDIT -->
+              <div class="modal fade" id="editTweet-<%= reply.id %>" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="modalLabel">Edit Tweet</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <%= form_for(reply,  :remote => true) do |f| %>
+                      <div class="tweet-modal">
+                          <center>
+                            <div class="modal-body">
+                              <%= f.text_area :content, autofocus: true, class: 'tweet-text-area' %>
+                            </div>
+                          </center>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <%= f.submit "Update Tweet", :class => 'btn btn-primary' %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <!-- EDIT -->
+
+              <!-- REPLY -->
+              <div class="modal fade" id="replyTweet-<%= reply.id %>" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="modalLabel">Reply To Tweet
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <%= form_for(Reply.new,  :remote => true) do |f| %>
+                      <div class="tweet-modal">
+                          <center>
+                            <div class="modal-body">
+                              <%= f.text_area :content, autofocus: true, class: 'tweet-text-area' %>
+                              <%= f.hidden_field :tweet_id, :value => reply.id %>
+                            </div>
+                          </center>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <%= f.submit "Reply", :class => 'btn btn-primary' %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <!-- REPLY -->
+
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-3">
+    <div class="card">
+      <div class="card-body">
+        <p>about</p>
+      </div>
+    </div>
+  </div>
+</div>
