@@ -5,23 +5,15 @@ class RepliesController < ApplicationController
     @tweet.user = current_user
     @tweet.save
     respond_to do |f|
-      f.html { redirect_back fallback_location: root_path }
+      f.html { redirect_back fallback_location: home_path }
     end
   end
 
   def update
-    @tweet = Reply.find(params[:id])
+    @tweet = Reply.find params[:id]
     @tweet.update tweet_params
     respond_to do |f|
-      f.html { redirect_back fallback_location: root_path }
-    end
-  end
-
-  def destroy
-    @tweet = Reply.find(params[:id])
-    @tweet.delete
-    respond_to do |f|
-      f.html { redirect_back fallback_location: root_path }
+      f.html { redirect_back fallback_location: home_path }
     end
   end
 

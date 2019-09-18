@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="col-6">
-    <%= form_for(@newTweet, :remote => true) do |f| %>
+    <%= form_for(General.new, :remote => true) do |f| %>
       <center>
         <div class="field">
           <%= f.text_field :content, autofocus: true, class: 'form-control' %>
@@ -40,7 +40,7 @@
             <p class='tweet-links'>
               <%= link_to 'Reply', '#', data: {toggle: "modal", target: "#replyTweet-" +tweet.id.to_s} %>
               <%= link_to 'Edit', '#', data: {toggle: "modal", target: "#editTweet-" + tweet.id.to_s} %>
-              <%= link_to 'Delete', general_path(tweet.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= link_to 'Delete', tweet_path(tweet.id), method: :delete, data: { confirm: 'Are you sure?' } %>
               <%= link_to 'View Conversation', conversation_path(
               :id => tweet.id) %>
 

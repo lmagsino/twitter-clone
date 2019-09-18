@@ -54,7 +54,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <%= form_for(@newTweet, :remote => true) do |f| %>
+      <%= form_for(General.new, :remote => true) do |f| %>
         <div class="tweet-modal">
             <center>
               <div class="modal-body">
