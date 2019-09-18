@@ -9,11 +9,19 @@ class GeneralsController < ApplicationController
     end
   end
 
+  def update
+    @tweet = General.find(params[:id])
+    @tweet.update tweet_params
+    respond_to do |f|
+      f.html { redirect_to home_path}
+    end
+  end
+
 
   private
 
   def tweet_params
-    params.require(:general).permit :content
+    params.require(:general).permit!
   end
 
 end
