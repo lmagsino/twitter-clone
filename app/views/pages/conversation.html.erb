@@ -29,17 +29,23 @@
               <p class='tweet-conversation-content'><%= @tweet.content %></p>
             </div>
           </div>
-          <div class="row">
+          <div class="row tweet-links">
             <div class="col-sm-4">
-              <%= link_to 'Reply', '#', data: {toggle: "modal", target: "#replyTweet-" +@tweet.id.to_s} %>
+              <%= link_to '#', data: {toggle: "modal", target: "#replyTweet-" +@tweet.id.to_s} do %>
+                <%= fa_icon "reply" %>
+              <% end %>
             </div>
 
             <% if (@tweet.user_id == current_user.id) %>
               <div class="col-sm-4">
-                <%= link_to 'Edit', '#', data: {toggle: "modal", target: "#editTweet-" + @tweet.id.to_s} %>
+                <%= link_to '#', data: {toggle: "modal", target: "#editTweet-" + @tweet.id.to_s} do %>
+                  <%= fa_icon "edit" %>
+                <% end %>
               </div>
               <div class="col-sm-4">
-                <%= link_to 'Delete', tweet_path(@tweet.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to tweet_path(@tweet.id), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <%= fa_icon "trash" %>
+                <% end %>
               </div>
             <% end %>
 
@@ -67,18 +73,26 @@
           </div>
           <div class='col-sm-12'>
             <p class='tweet-links'>
-              <%= link_to 'Reply', '#', data: {toggle: "modal", target: "#replyTweet-" +reply.id.to_s} %>
-
-              <% if (@tweet.user_id == current_user.id) %>
-                <%= link_to 'Edit', '#', data: {toggle: "modal", target: "#editTweet-" + reply.id.to_s} %>
-                <%= link_to 'Delete', tweet_path(reply.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= link_to '#', data: {toggle: "modal", target: "#replyTweet-" +reply.id.to_s} do %>
+                <%= fa_icon "reply" %>
               <% end %>
-              <%= link_to 'View Conversation', conversation_path(
-              :id => reply.id) %>
+              <% if (reply.user_id == current_user.id) %>
+                <%= link_to '#', data: {toggle: "modal", target: "#editTweet-" + reply.id.to_s} do %>
+                  <%= fa_icon "edit" %>
+                <% end %>
+
+                <%= link_to tweet_path(reply.id), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <%= fa_icon "trash" %>
+                <% end %>
+              <% end %>
+
+              <%= link_to conversation_path(
+              :id => reply.id) do %>
+                <%= fa_icon "comment" %>
+              <% end %>
 
               <%= render 'edit_tweet.html.erb', :tweet => reply %>
               <%= render 'reply_tweet.html.erb', :tweet => reply %>
-
             </p>
           </div>
         </div>
