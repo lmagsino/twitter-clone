@@ -1,5 +1,5 @@
 class Reply < Tweet
 
-  belongs_to :tweets
+  belongs_to :tweet
 
 end
