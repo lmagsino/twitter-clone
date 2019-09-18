@@ -1,6 +1,7 @@
 class Tweet < ApplicationRecord
 
   belongs_to :user
+  has_many :reply
 
   validates :user_id, :presence => true
   validates :content, :presence => true, :length => {:maximum => 140}
