@@ -11,8 +11,8 @@ class PagesController < ApplicationController
   end
 
   def conversation
-    @tweet = Tweet.find(params[:id])
-    @replies = @tweet.replies
+    @tweet = Tweet.find_by_id params[:id]
+    redirect_to home_path unless @tweet
   end
 
 end
