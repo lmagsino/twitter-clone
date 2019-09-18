@@ -17,11 +17,19 @@ class GeneralsController < ApplicationController
     end
   end
 
+  def destroy
+    @tweet = General.find(params[:id])
+    @tweet.delete
+    respond_to do |f|
+      f.html { redirect_to home_path}
+    end
+  end
+
 
   private
 
   def tweet_params
-    params.require(:general).permit!
+    params.require(:general).permit :content
   end
 
 end

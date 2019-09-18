@@ -43,7 +43,7 @@
               <!-- <li type="nav-item button" class="btn btn-primary navbar-btn" data-target="#tweetModal" data-toggle="modal">Tweet
               </li> -->
               <%= link_to 'Edit', '#', data: {toggle: "modal", target: "#editTweet-" + tweet.id.to_s} %>
-              <span>Delete</span>
+              <%= link_to 'Delete', general_path(tweet.id), method: :delete, data: { confirm: 'Are you sure?' } %>
               <a href=''>View Conversation</a>
 
               <!-- EDIT -->
