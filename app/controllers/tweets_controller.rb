@@ -6,7 +6,7 @@ class TweetsController < ApplicationController
     @tweet.type = :Tweet
     @tweet.save
     respond_to do |f|
-      f.html { redirect_back fallback_location: home_path }
+      f.html { redirect_back :fallback_location => home_path }
     end
   end
 
@@ -14,7 +14,7 @@ class TweetsController < ApplicationController
     @tweet = Tweet.find params[:id]
     @tweet.update tweet_params
     respond_to do |f|
-      f.html { redirect_back fallback_location: home_path }
+      f.html { redirect_back :fallback_location => home_path }
     end
   end
 
@@ -22,7 +22,7 @@ class TweetsController < ApplicationController
     @tweet = Tweet.find params[:id]
     @tweet.delete
     respond_to do |f|
-      f.html { redirect_back fallback_location: home_path }
+      f.html { redirect_back :fallback_location => home_path }
     end
   end
 
