@@ -104,9 +104,10 @@
                 <% end %>
               <% end %>
 
-              <%= link_to conversation_path(
-              :id => reply.id) do %>
-                <%= fa_icon "comment" %>
+              <% if reply.replies.size > 0 %>
+                <%= link_to conversation_path(:id => reply.id) do %>
+                  <%= fa_icon "comment" %>
+                <% end %>
               <% end %>
 
               <%= render 'edit_tweet.html.erb', :tweet => reply %>
