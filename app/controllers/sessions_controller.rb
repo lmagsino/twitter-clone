@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   skip_before_action :require_login
+  before_action :redirect_if_login, :only => :new
 
   def create
     user = User.find_by(:email => params[:session][:email])
@@ -17,5 +18,12 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     redirect_to root_path
+  end
+
+
+  private
+
+  def redirect_if_login
+    redirect_to home_path if logged_in?
   end
 end
