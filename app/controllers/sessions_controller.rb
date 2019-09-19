@@ -9,7 +9,8 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to home_path
     else
-      render :login_path
+      flash[:danger] = "Login Failed."
+      render :new
     end
   end
 

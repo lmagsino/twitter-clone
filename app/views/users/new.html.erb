@@ -1,7 +1,10 @@
 <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        </br>
+        <%= render 'shared/errors', obj: @user %>
         <div class="card card-signin my-5">
           <div class="card-body">
+
             <h5 class="card-title text-center">Create Twitter Account</h5>
             <%= form_for(@user, :html => {class: "form-horizontal form-signin", role: "form"}) do |f| %>
 
