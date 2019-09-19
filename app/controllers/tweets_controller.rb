@@ -3,7 +3,6 @@ class TweetsController < ApplicationController
   def create
     @tweet = Tweet.new tweet_params
     @tweet.user = current_user
-    @tweet.type = :Tweet
     @tweet.save
     respond_to do |f|
       f.html { redirect_back :fallback_location => home_path }
@@ -30,7 +29,7 @@ class TweetsController < ApplicationController
   private
 
   def tweet_params
-    params.require(:tweet).permit :content
+    params.require(:tweet).permit :content, :tweet_id
   end
 
 end
