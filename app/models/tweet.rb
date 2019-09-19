@@ -14,12 +14,7 @@ class Tweet < ApplicationRecord
   private
 
   def assign_type
-    self.type =
-      if self.tweet_id
-        :Reply
-      else
-        :Tweet
-      end
+    self.type = self.tweet_id ? :Reply : :Tweet
   end
 
 end
