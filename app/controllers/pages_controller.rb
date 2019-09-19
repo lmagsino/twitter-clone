@@ -4,11 +4,11 @@ class PagesController < ApplicationController
   before_action :redirect_if_login, :only => :index
 
   def home
-    @tweets = Tweet.where :type => :Tweet
+    @tweets = Tweet.general
   end
 
   def profile
-    @tweets = Tweet.where :user_id => current_user.id, :type => :Tweet
+    @tweets = Tweet.general.by_user_id current_user.id
   end
 
   def conversation

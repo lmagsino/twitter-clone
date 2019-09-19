@@ -10,6 +10,9 @@ class Tweet < ApplicationRecord
 
   default_scope -> { order :created_at => :desc }
 
+  scope :general, -> { where :type => :Tweet }
+  scope :by_user_id, -> (user_id) { where :user_id => user_id }
+
 
   private
 
