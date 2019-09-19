@@ -10,9 +10,8 @@ Rails.application.routes.draw do
   post 'login', :to => 'sessions#create'
   delete 'logout', :to => 'sessions#destroy'
 
-  resources :generals, :only => [:create, :update]
   resources :replies, :only => [:create, :update]
-  resources :tweets, :only => :destroy
+  resources :tweets, :only => [:create, :update, :destroy]
   resources :users, :only => [:new, :create]
 
 end

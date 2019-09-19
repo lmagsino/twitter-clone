@@ -1,2 +1,0 @@
-class General < Tweet
-end
