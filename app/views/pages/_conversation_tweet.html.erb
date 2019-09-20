@@ -35,13 +35,14 @@
         </div>
       <% end %>
 
-      <%= render 'pages/edit_tweet.html.erb', :tweet => tweet %>
-      <%= render 'pages/reply_tweet.html.erb', :tweet => tweet %>
+
+      <%= render 'pages/conversations/edit_tweet', :tweet => tweet, :conversation_id => tweet.id %>
+      <%= render 'pages/conversations/reply_tweet.html.erb', :tweet => tweet, :conversation_id => tweet.id  %>
 
     </div>
   </div>
 </center>
 </br>
 <div>
-  <%= render 'pages/show_tweets.html.erb', :tweets => tweet.replies %>
+  <%= render 'pages/conversations/show_tweets.html.erb', :tweets => tweet.replies %>
 </div>
