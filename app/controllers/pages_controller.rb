@@ -8,7 +8,7 @@ class PagesController < ApplicationController
   end
 
   def profile
-    @tweets = Tweet.general.by_user_id current_user.id
+    @current_user_tweets = Tweet.general.by_user_id current_user.id
   end
 
   def conversation

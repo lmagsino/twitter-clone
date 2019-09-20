@@ -4,22 +4,31 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new tweet_params
     @tweet.user = current_user
     @tweet.save
-    respond_to do |f|
-      f.html { redirect_back :fallback_location => home_path }
+
+    @tweets = Tweet.general
+    @current_user_tweets = Tweet.general.by_user_id current_user.id
+
+    respond_to do |format|
+      format.js
     end
   end
 
   def update
     @tweet = Tweet.find params[:id]
     @tweet.update tweet_params
-    respond_to do |f|
-      f.html { redirect_back :fallback_location => home_path }
+
+    @tweets = Tweet.general
+    @current_user_tweets = Tweet.general.by_user_id current_user.id
+
+    respond_to do |format|
+      format.js
     end
   end
 
   def destroy
     @tweet = Tweet.find params[:id]
     @tweet.delete
+    
     respond_to do |f|
       f.html { redirect_back :fallback_location => home_path }
     end

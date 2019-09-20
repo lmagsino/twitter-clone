@@ -36,7 +36,7 @@
           <img src='/assets/profile-logo.jpg' class='tweet-main-profile-logo'>
         </div>
         <div class='col-sm-11'>
-          <%= form_for(Tweet.new, :remote => true) do |f| %>
+          <%= form_for(Tweet.new,  :remote => true) do |f| %>
               <div class="field" style='margin-left: 10px;'>
                 <%= f.text_field :content, autofocus: true, maxlength: 140, class: 'form-control'%>
                 <span class= 'btn btn-submit',
@@ -48,50 +48,11 @@
         </div>
       </div>
     </div>
-    <% for tweet in @tweets %>
-      <div class="card post-panel">
-        <div class="card-body row">
-          <div class='col-sm-1'>
-            <img src='/assets/profile-logo.jpg' class='tweet-profile-logo'>
-          </div>
-          <div class='col-sm-11'>
-            <p class='tweet-title'>
-              <span class='tweet-owner'><%= tweet.user.username %></span>
-              <span class='tweet-creation'>
-                <%= tweet.created_at.to_formatted_s(:short) %>
-              </span
-            </p>
-            <p class='tweet-content'><%= tweet.content %></p>
-          </div>
-          <div class='col-sm-12'>
-            <p class='tweet-links'>
-              <%= link_to '#', data: {toggle: "modal", target: "#replyTweet-" +tweet.id.to_s} do %>
-                <%= fa_icon "reply" %>
-              <% end %>
-              <% if (tweet.user_id == current_user.id) %>
-                <%= link_to '#', data: {toggle: "modal", target: "#editTweet-" + tweet.id.to_s} do %>
-                  <%= fa_icon "edit" %>
-                <% end %>
-
-                <%= link_to tweet_path(tweet.id), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                  <%= fa_icon "trash" %>
-                <% end %>
-              <% end %>
-
-              <% if tweet.replies.size > 0 %>
-                  <%= link_to conversation_path(:id => tweet.id) do %>
-                    <%= fa_icon "comment" %>
-                  <% end %>
-              <% end %>
+    <div id="show-tweets-div">
+      <%= render 'show_tweets.html.erb', :tweets => @tweets %>
+    </div>
 
 
-              <%= render 'edit_tweet.html.erb', :tweet => tweet %>
-              <%= render 'reply_tweet.html.erb', :tweet => tweet %>
-            </p>
-          </div>
-        </div>
-      </div>
-    <% end %>
   </div>
   <div class="col-3">
     <div class="card">

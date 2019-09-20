@@ -30,93 +30,9 @@
     </div>
   </div>
   <div class="col-6">
-      <center>
-
-        <div class="card post-panel">
-          <div class="card-body row">
-            <div class='col-sm-1'>
-              <img src='/assets/profile-logo.jpg' class='tweet-profile-logo'>
-            </div>
-            <div class='col-sm-11'>
-              <p class='tweet-title'>
-                <span class='tweet-owner'><%= @tweet.user.username  %></span>
-                <span class='tweet-creation'>
-                  <%= @tweet.created_at.to_formatted_s(:short) %>
-                </span
-              </p>
-              <p class='tweet-conversation-content'><%= @tweet.content %></p>
-            </div>
-          </div>
-          <div class="row tweet-links">
-            <div class="col-sm-4">
-              <%= link_to '#', data: {toggle: "modal", target: "#replyTweet-" +@tweet.id.to_s} do %>
-                <%= fa_icon "reply" %>
-              <% end %>
-            </div>
-
-            <% if (@tweet.user_id == current_user.id) %>
-              <div class="col-sm-4">
-                <%= link_to '#', data: {toggle: "modal", target: "#editTweet-" + @tweet.id.to_s} do %>
-                  <%= fa_icon "edit" %>
-                <% end %>
-              </div>
-              <div class="col-sm-4">
-                <%= link_to tweet_path(@tweet.id), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                  <%= fa_icon "trash" %>
-                <% end %>
-              </div>
-            <% end %>
-
-            <%= render 'edit_tweet.html.erb', :tweet => @tweet %>
-            <%= render 'reply_tweet.html.erb', :tweet => @tweet %>
-
-          </div>
-        </div>
-      </center>
-      </br>
-    <% for reply in @tweet.replies %>
-      <div class="card post-panel">
-        <div class="card-body row">
-          <div class='col-sm-1'>
-            <img src='/assets/profile-logo.jpg' class='tweet-profile-logo'>
-          </div>
-          <div class='col-sm-11'>
-            <p class='tweet-title'>
-              <span class='tweet-owner'><%= reply.user.username  %></span>
-              <span class='tweet-creation'>
-                <%= reply.created_at.to_formatted_s(:short) %>
-              </span
-            </p>
-            <p class='tweet-content'><%= reply.content %></p>
-          </div>
-          <div class='col-sm-12'>
-            <p class='tweet-links'>
-              <%= link_to '#', data: {toggle: "modal", target: "#replyTweet-" +reply.id.to_s} do %>
-                <%= fa_icon "reply" %>
-              <% end %>
-              <% if (reply.user_id == current_user.id) %>
-                <%= link_to '#', data: {toggle: "modal", target: "#editTweet-" + reply.id.to_s} do %>
-                  <%= fa_icon "edit" %>
-                <% end %>
-
-                <%= link_to tweet_path(reply.id), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                  <%= fa_icon "trash" %>
-                <% end %>
-              <% end %>
-
-              <% if reply.replies.size > 0 %>
-                <%= link_to conversation_path(:id => reply.id) do %>
-                  <%= fa_icon "comment" %>
-                <% end %>
-              <% end %>
-
-              <%= render 'edit_tweet.html.erb', :tweet => reply %>
-              <%= render 'reply_tweet.html.erb', :tweet => reply %>
-            </p>
-          </div>
-        </div>
-      </div>
-    <% end %>
+    <div id='conversation-tweet-div'>
+      <%= render 'conversation_tweet.html.erb', :tweet => @tweet %>
+    </div>
   </div>
   <div class="col-3">
     <div class="card">
