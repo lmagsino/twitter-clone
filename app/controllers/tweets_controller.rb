@@ -6,7 +6,7 @@ class TweetsController < ApplicationController
     @tweet.save
 
     @tweets = Tweet.general
-    @current_user_tweets = Tweet.general.user current_user
+    @current_user_tweets = current_user.tweets.general
 
     update_tweet_by_conversation_id
     respond_to do |format|
@@ -19,7 +19,7 @@ class TweetsController < ApplicationController
     @tweet.update tweet_params
 
     @tweets = Tweet.general
-    @current_user_tweets = Tweet.general.user current_user
+    @current_user_tweets = current_user.tweets.general
 
     update_tweet_by_conversation_id
     respond_to do |format|
