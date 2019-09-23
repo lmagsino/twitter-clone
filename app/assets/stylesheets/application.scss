@@ -12,10 +12,12 @@
  */
 
 @import "bootstrap";
+@import "font-awesome";
 @import "pages.scss";
 
 .navbar {
-  background-color: white
+  background-color: white;
+  margin-bottom: 20px;
 }
 
 .twitter-logo {
@@ -29,6 +31,71 @@
   width:25px;
   height:25px;
 }
+
+.tweet-profile-logo {
+  width:50px;
+  height:50px;
+}
+
+.tweet-main-profile-logo {
+  width:35px;
+  height:35px;
+}
+
+.tweet-text-area {
+  width: 100%;
+  height: 100%;
+}
+
+.tweet-content {
+  text-align: left;
+  margin-left: 15px;
+}
+
+.tweet-conversation-content {
+  text-align: left;
+  margin-left: 15px;
+  font-size: 30px;
+}
+
+
+.tweet-title {
+  text-align: left;
+  margin-left: 15px;
+}
+
+.tweet-owner {
+  color: black;
+  font-weight: bold;
+}
+
+.tweet-creation {
+  opacity: 0.7;
+}
+
+.tweet-links a {
+  color: black;
+  margin-left: 30px;
+}
+
+.card-img {
+  margin-left: -20px;
+  margin-top: -20px;
+}
+
+.rounded-img {
+  margin-left: -20px;
+  margin-top: 20px;
+}
+
+.profile-banner {
+  width: 1110px;
+  height: 300px;
+  margin-top: -65px;
+  margin-left: -33px;
+  margin-bottom: -65px;
+}
+
 
 body {
   background-color: rgba(212, 216, 212, 1.0)

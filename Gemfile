@@ -30,6 +30,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap', '~> 4.3.1'
 # For Bootstrap Javascript
 gem 'jquery-rails'
+# For Icons
+gem "font-awesome-rails"
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

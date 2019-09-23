@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_17_003515) do
+ActiveRecord::Schema.define(version: 2019_09_18_033908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "tweets", force: :cascade do |t|
+    t.string "content"
+    t.string "type", default: "Tweet"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "tweet_id"
+    t.index ["user_id"], name: "index_tweets_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
@@ -24,4 +34,5 @@ ActiveRecord::Schema.define(version: 2019_09_17_003515) do
     t.string "password_digest"
   end
 
+  add_foreign_key "tweets", "users"
 end

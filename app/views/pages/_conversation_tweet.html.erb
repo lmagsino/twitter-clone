@@ -1,0 +1,48 @@
+<center>
+
+  <div class="card post-panel">
+    <div class="card-body row">
+      <div class='col-sm-1'>
+        <img src='/assets/profile-logo.jpg' class='tweet-profile-logo'>
+      </div>
+      <div class='col-sm-11'>
+        <p class='tweet-title'>
+          <span class='tweet-owner'><%= tweet.user.username  %></span>
+          <span class='tweet-creation'>
+            <%= tweet.created_at.to_formatted_s(:short) %>
+          </span
+        </p>
+        <p class='tweet-conversation-content'><%= tweet.content %></p>
+      </div>
+    </div>
+    <div class="row tweet-links">
+      <div class="col-sm-4">
+        <%= link_to '#', data: {toggle: "modal", target: "#replyTweet-" +@tweet.id.to_s} do %>
+          <%= fa_icon "reply" %>
+        <% end %>
+      </div>
+
+      <% if (@tweet.user_id == current_user.id) %>
+        <div class="col-sm-4">
+          <%= link_to '#', data: {toggle: "modal", target: "#editTweet-" + @tweet.id.to_s} do %>
+            <%= fa_icon "edit" %>
+          <% end %>
+        </div>
+        <div class="col-sm-4">
+          <%= link_to tweet_path(tweet.id), method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <%= fa_icon "trash" %>
+          <% end %>
+        </div>
+      <% end %>
+
+
+      <%= render 'pages/conversations/edit_tweet', :tweet => tweet, :conversation_id => tweet.id %>
+      <%= render 'pages/conversations/reply_tweet.html.erb', :tweet => tweet, :conversation_id => tweet.id  %>
+
+    </div>
+  </div>
+</center>
+</br>
+<div>
+  <%= render 'pages/conversations/show_tweets.html.erb', :tweets => tweet.replies %>
+</div>

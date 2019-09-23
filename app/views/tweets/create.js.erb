@@ -1,0 +1,10 @@
+$("#show-tweets-div").html("<%= escape_javascript(render '/pages/show_tweets.html.erb', :tweets => @tweets) %>");
+
+$("#profile-tweets-div").html("<%= escape_javascript(render '/pages/show_tweets.html.erb', :tweets => @current_user_tweets) %>");
+
+$("#conversation-tweet-div").html("<%= escape_javascript(render '/pages/conversation_tweet.html.erb', :tweet => @tweet) %>");
+
+$('.modal-backdrop').remove()
+$('body').removeClass('modal-open')
+$('#tweetModal').css('display', 'none')
+$('.modalTweet').css('display', 'none')
