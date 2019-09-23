@@ -1,0 +1,15 @@
+div class="modal fade modalTweet" id="editTweet-#{tweet.id}" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true"
+  div class="modal-dialog" role="document"
+    div class="modal-content"
+      div class="modal-header"
+        h5 class="modal-title" id="modalLabel" Edit Tweet
+        button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          span aria-hidden="true" &times;
+      == form_for(tweet.becomes(Tweet),  :remote => true) do |f|
+        div class="tweet-modal"
+            center
+              div class="modal-body"
+                == f.text_area :content, autofocus: true, maxlength: 140, class: 'tweet-text-area'
+        div class="modal-footer"
+          button type="button" class="btn btn-secondary" data-dismiss="modal" Close
+          == f.submit "Update Tweet", :class => 'btn btn-primary'

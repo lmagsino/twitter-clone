@@ -32,6 +32,8 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 # For Icons
 gem "font-awesome-rails"
+# Use slim as a templating engine
+gem 'slim'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

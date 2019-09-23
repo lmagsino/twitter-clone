@@ -1,0 +1,53 @@
+div class="row"
+  div class="col-3"
+    div class="card"
+      div class="card-body"
+        div class="card-img"
+          img src='/assets/banner.jpg' style="width:253px;height:80px;"
+        div
+          div class="col-sm-12"
+          img src='/assets/profile-logo.jpg' class='rounded-img' width='50px' height='50px'
+          span style="margin-left: 20px;" == current_user.username
+    br
+    div class="card"
+      div class="card-body"
+        h5 style="color: grey; font-size: 125%;" Trends
+        a href="" #WWENXT
+        br
+        a href="" Athletico
+        br
+        a href="" #الحرب_العالميه_الثالثه
+        br
+        a href="" Rony
+        br
+        a href="" #NXTonUSA
+        br
+        a href="" Justin Trudeau
+        br
+        a href="" Madrid
+        br
+        a href="" #ProvaDofazendeiro
+        br
+        a href="" Atlético
+        br
+        a href="" #MarriageIn4Words
+        br
+
+  div class="col-6"
+    div class="card post-panel"
+      div class="card-body row"
+        div class='col-sm-1'
+          img src='/assets/profile-logo.jpg' class='tweet-main-profile-logo'
+        div class='col-sm-11'
+          == form_for(Tweet.new,  :remote => true) do |f|
+              div class="field" style='margin-left: 10px;'
+                == f.text_field :content, autofocus: true, maxlength: 140, class: 'form-control'
+                span class= 'btn btn-submit' style="float:right;margin-top:3px;"
+                  == f.submit "Add Tweet", class:'btn btn-primary'
+    div id="show-tweets-div"
+      == render 'show_tweets.html.slim', :tweets => @tweets
+
+  div class="col-3"
+    div class="card"
+      div class="card-body"
+        p style="opacity:0.5" 2019 Twitter About Help Terms Privacy Cookies Ads Info Brand Blog Status Apps Jobs Advertise Businesses Media Developers

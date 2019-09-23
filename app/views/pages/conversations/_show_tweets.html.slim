@@ -1,0 +1,28 @@
+= for tweet in tweets
+  div class="card post-panel"
+    div class="card-body row"
+      div class='col-sm-1'
+        img src='/assets/profile-logo.jpg' class='tweet-profile-logo'
+      div class='col-sm-11'
+        p class='tweet-title'
+          span class='tweet-owner' == tweet.user.username
+          span class='tweet-creation'
+            == tweet.created_at.to_formatted_s(:short)
+        p class='tweet-content' == tweet.content
+      div class='col-sm-12'
+        p class='tweet-links'
+          == link_to '#', data: {toggle: "modal", target: "#replyTweet-" +tweet.id.to_s} do
+            == fa_icon "reply"
+          - if (tweet.user_id == current_user.id)
+            == link_to '#', data: {toggle: "modal", target: "#editTweet-" + tweet.id.to_s} do
+              == fa_icon "edit"
+
+            == link_to tweet_path(tweet.id), method: :delete, data: { confirm: 'Are you sure?' } do
+              == fa_icon "trash"
+
+          - if tweet.replies.size > 0
+              == link_to conversation_path(:id => tweet.id) do
+                == fa_icon "comment"
+
+          == render 'pages/conversations/edit_tweet', :tweet => tweet, :conversation_id => tweet.tweet_id
+          == render 'pages/conversations/reply_tweet', :tweet => tweet, :conversation_id => tweet.tweet_id

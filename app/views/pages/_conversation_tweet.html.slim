@@ -1,0 +1,28 @@
+center
+  div class="card post-panel"
+    div class="card-body row"
+      div class='col-sm-1'
+        img src='/assets/profile-logo.jpg' class='tweet-profile-logo'
+      div class='col-sm-11'
+        p class='tweet-title'
+          span class='tweet-owner' == tweet.user.username
+          span class='tweet-creation'
+            == tweet.created_at.to_formatted_s(:short)
+        p class='tweet-conversation-content' == tweet.content
+    div class="row tweet-links"
+      div class="col-sm-4"
+        == link_to '#', data: {toggle: "modal", target: "#replyTweet-" +@tweet.id.to_s} do
+          == fa_icon "reply"
+      - if (@tweet.user_id == current_user.id)
+        div class="col-sm-4"
+          == link_to '#', data: {toggle: "modal", target: "#editTweet-" + @tweet.id.to_s} do
+            == fa_icon "edit"
+        div class="col-sm-4"
+          == link_to tweet_path(tweet.id), method: :delete, data: { confirm: 'Are you sure?' } do
+          == fa_icon "trash"
+
+      == render 'pages/conversations/edit_tweet', :tweet => tweet, :conversation_id => tweet.id
+      == render 'pages/conversations/reply_tweet', :tweet => tweet, :conversation_id => tweet.id
+br
+div
+  == render 'pages/conversations/show_tweets', :tweets => tweet.replies
