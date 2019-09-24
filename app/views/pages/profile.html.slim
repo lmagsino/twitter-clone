@@ -10,13 +10,14 @@ div class="row"
         div
           div class="col-sm-12"
             img src='/assets/profile-logo.jpg' class='rounded-img' width='50px' height='50px'
-            span style="margin-left: 20px;" == current_user.username
+            span style="margin-left: 20px;"
+              = current_user.username
           br
           span style="opacity: 0.7;" This is a Twitter Clone created by Leo Magsino
 
   div class="col-6"
     div id="profile-tweets-div"
-      == render 'show_tweets', :tweets => @current_user_tweets
+      = render 'show_tweets', :tweets => @current_user_tweets
 
   div class="col-3"
     div class="card"

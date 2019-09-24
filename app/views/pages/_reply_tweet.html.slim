@@ -5,12 +5,12 @@ div class="modal fade modalTweet" id="replyTweet-#{tweet.id}" tabindex="-1" role
         h5 class="modal-title" id="modalLabel" Reply To Tweet
         button type="button" class="close" data-dismiss="modal" aria-label="Close"
           span aria-hidden="true" &times;
-      == form_for(Tweet.new,  :remote => true) do |f|
+      = form_for(Tweet.new,  :remote => true) do |f|
         div class="tweet-modal"
             center
               div class="modal-body"
-                == f.text_area :content, autofocus: true, maxlength: 140, class: 'tweet-text-area'
-                == f.hidden_field :tweet_id, :value => tweet.id
+                = f.text_area :content, autofocus: true, maxlength: 140, class: 'tweet-text-area'
+                = f.hidden_field :tweet_id, :value => tweet.id
         div class="modal-footer"
           button type="button" class="btn btn-secondary" data-dismiss="modal" Close
           = f.submit "Reply", :class => 'btn btn-primary'
