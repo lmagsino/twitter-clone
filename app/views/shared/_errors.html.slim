@@ -1,0 +1,12 @@
+- if obj.errors.any?
+  div class="row"
+    div
+      div class="card bg-danger" style="left:20px; width: 440px"
+        div class="card-heading"
+          h5 class="card-title"
+            = pluralize(obj.errors.count, "error")
+              prohibited this article from being saved:
+          div class="card-body"
+            ul
+              = obj.errors.full_messages.each do |msg|
+                li = msg

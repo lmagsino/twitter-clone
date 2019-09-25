@@ -1,0 +1,17 @@
+= render 'layouts/messages', obj: @user
+div class="row"
+  div class="col-sm-9 col-md-7 col-lg-5 mx-auto"
+    div class="card card-signin my-5"
+      div class="card-body"
+        h5 class="card-title text-center" Log In To Twitter
+        = form_for(:session, :html => {class: "form-horizontal form-signin", role: "form"}) do |f|
+
+          div class="form-label-group"
+            = f.email_field :email, class: "form-control", placeholder: "Enter email", autofocus: true, required: true
+            = f.label :email
+
+          div class="form-label-group"
+            = f.password_field :password, class: "form-control", placeholder: "Enter password", autofocus: true, required: true
+            = f.label :password
+
+          = f.submit "Log In", class: 'btn btn-lg btn-primary btn-block text-uppercase'

@@ -1,0 +1,41 @@
+div class="row"
+  div class="col-3"
+    div class="card"
+      div class="card-body"
+        div class="card-img"
+          img src='/assets/banner.jpg' style="width:253px;height:80px;"
+        div
+          div class="col-sm-12"
+          img src='/assets/profile-logo.jpg' class='rounded-img' width='50px' height='50px'
+            span style="margin-left: 20px;"
+              = current_user.username
+    br
+    div class="card"
+      div class="card-body"
+        h5 style="color: grey; font-size: 125%;" Trends
+        a href="" #WWENXT
+        br
+        a href="" Athletico
+        br
+        a href="" #الحرب_العالميه_الثالثه
+        br
+        a href="" Rony
+        br
+        a href="" #NXTonUSA
+        br
+        a href="" Justin Trudeau
+        br
+        a href="" Madrid
+        br
+        a href="" #ProvaDofazendeiro
+        br
+        a href="" Atlético
+        br
+        a href="" #MarriageIn4Words
+  div class="col-6"
+    div id='conversation-tweet-div'
+      = render 'conversation_tweet.html.slim', :tweet => @tweet
+  div class="col-3"
+    div class="card"
+      div class="card-body"
+        p style="opacity:0.5"2019 Twitter About Help Terms Privacy Cookies Ads Info Brand Blog Status Apps Jobs Advertise Businesses Media Developers
